@@ -28,6 +28,9 @@ class EntityManager
 
     public function persistArticle(Article $article)
     {
+
+        // xxx functions
+        
         // je créé une requête SQL qui insert dans la table article
         // un nouvel article en utilisant les parametres PDO
         // pour que PDO supprime les potentiels balises PHP, SQL etc
