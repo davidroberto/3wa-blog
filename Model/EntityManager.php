@@ -1,36 +1,23 @@
 <?php
 
-require_once("Entity/Article.php");
+require_once(ROOT . "/Model/Entity/Article.php");
+require_once(ROOT . "/Model/Database/MysqlDatabaseConnexion.php");
 
 
 class EntityManager
 {
 
-    private $dbConnexion;
+    private ?PDO $dbConnexion;
 
     // constructeur de la classe EntityManager
-    //
     public function __construct() {
-        $host = 'localhost';
-        $username = 'root';
-        $password = 'skateboard';
-        $db = '3wa_blog';
-
-        try{
-            $conn = new PDO("mysql:host=$host;dbname=$db", $username, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->dbConnexion = $conn;
-        } catch(PDOException $e){
-            echo "Erreur : " . $e->getMessage();
-            return null;
-        }
+        $mysqlDbConnexion = new MysqlDatabaseConnexion();
+        $this->dbConnexion = $mysqlDbConnexion->connect();
     }
 
     public function persistArticle(Article $article)
     {
 
-        // xxx functions
-        
         // je créé une requête SQL qui insert dans la table article
         // un nouvel article en utilisant les parametres PDO
         // pour que PDO supprime les potentiels balises PHP, SQL etc

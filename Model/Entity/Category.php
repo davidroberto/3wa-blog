@@ -1,6 +1,6 @@
 <?php
 
-require_once("Publishable.php");
+require_once(ROOT . "/Model/Entity/Publishable.php");
 
 class Category extends Publishable
 {

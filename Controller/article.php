@@ -4,7 +4,9 @@ require_once("../Config/config.php");
 
 require_once(ROOT . "/Model/Repository/ArticleRepository.php");
 
+$id = $_GET['id'];
 $articleRepository = new ArticleRepository();
-$articles = $articleRepository->findLasts(3);
+$article = $articleRepository->find($id);
 
-include("../View/homeView.php");
+require_once(ROOT . '/View/articleView.php');
+

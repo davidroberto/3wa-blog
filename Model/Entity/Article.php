@@ -1,7 +1,7 @@
 <?php
 
-require_once("Publishable.php");
-require_once("Category.php");
+require_once(ROOT . "/Model/Entity/Publishable.php");
+require_once(ROOT . "/Model/Entity/Category.php");
 
 
 class Article extends Publishable

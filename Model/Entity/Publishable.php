@@ -15,6 +15,7 @@ class Publishable
     public function __construct()
     {
         $this->createdAt = new \DateTime('NOW');
+        $this->status = self::STATUS_DRAFT;
     }
 
     /**

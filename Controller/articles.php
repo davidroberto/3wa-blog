@@ -5,6 +5,6 @@ require_once("../Config/config.php");
 require_once(ROOT . "/Model/Repository/ArticleRepository.php");
 
 $articleRepository = new ArticleRepository();
-$articles = $articleRepository->findLasts(3);
+$articles = $articleRepository->findAll();
 
-include("../View/homeView.php");
+require_once(ROOT . '/View/articlesView.php');

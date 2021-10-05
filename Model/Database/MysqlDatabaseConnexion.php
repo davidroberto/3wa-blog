@@ -1,10 +1,9 @@
 <?php
 
-require_once("DatabaseConnexionInterface.php");
+require_once(ROOT . "/Model/Database/DatabaseConnexionInterface.php");
 
 class MysqlDatabaseConnexion implements DatabaseConnexionInterface
 {
-
     public function connect(): ?PDO
     {
         $host = 'localhost';
@@ -13,7 +12,7 @@ class MysqlDatabaseConnexion implements DatabaseConnexionInterface
         $db = '3wa_blog';
 
         try{
-            $conn = new PDO("mysql:host=$host;dbname=$db", $username, $password);
+            $conn = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $conn;
         } catch(PDOException $e){

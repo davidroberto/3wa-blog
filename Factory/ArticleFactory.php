@@ -1,7 +1,7 @@
 <?php
 
-require_once("../Model/Entity/Article.php");
-require_once("../Model/Entity/Category.php");
+require_once(ROOT . "/Model/Entity/Article.php");
+require_once(ROOT . "/Model/Entity/Category.php");
 
 class ArticleFactory
 {
@@ -9,16 +9,25 @@ class ArticleFactory
     public function createArticle(
         string $title,
         string $content
-//        Category $category
     ): Article
     {
         $article = new Article();
         $article->setTitle($title);
         $article->setContent($content);
-//        $article->setStatus(Article::STATUS_DRAFT);
-//        $article->setCategory($category);
 
         return $article;
+    }
+
+    public function createArticles($nbArticles): array
+    {
+        $articles = [];
+
+        for ($i = 1; $i <= $nbArticles; $i++) {
+            $article = $this->createArticle("titre".$i, "content ".$i);
+            array_push($articles, $article);
+        }
+
+        return $articles;
     }
 
 }
