@@ -18,16 +18,28 @@ class ArticleFactory
         return $article;
     }
 
-    public function createArticles($nbArticles): array
+    public function createArticleFromDb(array $articleFromDb): Article
+    {
+        $articleEntity = new Article();
+        $articleEntity->setId($articleFromDb['id']);
+        $articleEntity->setTitle($articleFromDb['title']);
+        $articleEntity->setStatus($articleFromDb['status']);
+        $articleEntity->setContent($articleFromDb['content']);
+        $articleEntity->setCreatedAt(new \DateTime($articleFromDb['created_at']));
+
+        return $articleEntity;
+    }
+
+    public function createArticlesFromDb(array $articlesFromDb): array
     {
         $articles = [];
 
-        for ($i = 1; $i <= $nbArticles; $i++) {
-            $article = $this->createArticle("titre".$i, "content ".$i);
-            array_push($articles, $article);
+        foreach ($articlesFromDb as $articleDb) {
+            $articleEntity = $this->createArticleFromDb($articleDb);
+            $articles[] = $articleEntity;
+//            array_push($articles, $articleEntity);
         }
 
         return $articles;
     }
-
 }

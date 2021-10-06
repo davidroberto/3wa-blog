@@ -15,5 +15,3 @@ if (!empty($_POST['title']) &&
 }
 
 require_once(ROOT . "/View/createArticleView.php");
-
-

@@ -15,9 +15,12 @@
             /** @var Article $article */
             foreach ($articles as $article) {
                 echo '<article>';
-                    echo '<a href="article.php?id='.$article->getId().'">'.$article->getTitle().'</a>';
+                    echo '<h2>'.$article->getTitle().'</h2>';
+                    echo '<a href="article.php?id='.$article->getId().'">Voir l\'article</a></br>';
+                    echo '<a href="delete-article.php?id='.$article->getId().'">Supprimer l\'article</a>';
                 echo '</article>';
-        } ?>
+            }
+        ?>
     </main>
 </body>
 </html>
